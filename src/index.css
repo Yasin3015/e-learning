@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+html{
+  scroll-behavior: smooth;
+}
+
+.plan-label {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.775rem;
+  color: white;
+  z-index: 2;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* small price strike */
+.old-price {
+  text-decoration: line-through;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.95rem;
+}
+
+/* current price */
+.current-price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+}
+
+/* subtle feature item icon glow */
+.feature-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* make sure cards don't overflow on very small screens */
+.pricing-grid {
+  gap: 1.25rem;
+}
+
+/* rotation keyframe */
+@keyframes rotate-beam {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.plan-card {
+  position: relative;
+  border-radius: 1rem; /* 16px */
+  overflow: hidden !important;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 640px) {
+  .plan-card::before {
+  height: 150% !important;
+ }
+  
+}
+.plan-card::before {
+  content: "";
+  height: 105% !important;
+  position: absolute;
+  inset: -3px;
+  border-radius: 0;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 260deg,
+    var(--accent) 330deg,
+    var(--accent-2) 330deg,
+    rgba(255,255,255,0.85) 272deg,
+    transparent 200deg,
+    transparent 360deg
+  );
+  filter: blur(8px);
+  opacity: 0.95;
+  transform-origin: center center;
+  animation: rotate-beam 6s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.plan-card::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: calc(1rem - 3px);
+  background: #000000;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.plan-card .card-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.plan-card:hover::before {
+  filter: blur(6px);
+  animation-duration: 2.6s;
+  opacity: 1;
+}
+@media (max-width: 640px) {
+  .plan-card::before { inset: -4px; filter: blur 8px; }
+  .plan-card::after { inset: 2px; }
+}
+.plan-cta {
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.plan-cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+
+
