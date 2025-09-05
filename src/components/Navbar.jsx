@@ -45,7 +45,7 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 transition-all pt-3 pb-3 duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 transition-all pt-3 pb-3 duration-500 w-dvw ${
         scrolled
           ? "bg-black/30 backdrop-blur-lg shadow-lg shadow-purple-500/30"
           : "bg-black/30 shadow-none"
