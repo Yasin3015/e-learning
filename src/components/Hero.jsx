@@ -18,7 +18,7 @@ const Hero = () => {
       bg-gradient-to-b from-gray-900 via-black to-gray-900 text-center md:text-left"
     >
       <div className="max-w-xl" data-aos="fade-right">
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight 
+        <h1 className="text-5xl pt-5 md:text-6xl font-extrabold leading-tight 
         bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
           Learn Anytime, Anywhere
         </h1>
