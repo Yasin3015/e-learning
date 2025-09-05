@@ -31,7 +31,6 @@ It combines **performance, clean UI, and animations** using libraries like Tailw
 - [Lucide Icons](https://lucide.dev/)
 - [Lottie React](https://lottiefiles.com/)
 - [AOS](https://michalsnik.github.io/aos/) (Scroll Animations)
-- [Animate.css](https://animate.style/)
 
 ---
 
