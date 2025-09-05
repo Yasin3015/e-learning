@@ -8,6 +8,12 @@ body{
   max-width: 100vw;
   overflow-x: hidden !important;
 }
+.duration-500{
+  transition: all .5s ease-in-out !important;
+}
+bg-transparent{
+  background-color: transparent !important;
+}
 
 .plan-label {
   position: absolute;

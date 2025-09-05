@@ -9,6 +9,7 @@ import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SuccessPopup from "./components/SuccessPopup";
 
 export default function App() {
   useEffect(() => {

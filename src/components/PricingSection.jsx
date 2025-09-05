@@ -87,7 +87,7 @@ export default function PricingSection() {
             return (
               <div
                 key={plan.key}
-                className={`plan-card relative rounded-2xl p-6 sm:p-8 shadow-lg transition-transform duration-300 hover:scale-[1.03] ${
+                className={`plan-card relative rounded-2xl p-6 sm:p-8 shadow-lg transition-transform duration-500 hover:scale-[1.03] ${
                   plan.highlighted
                     ? "transform scale-[1.02] shadow-2xl"
                     : "bg-transparent"

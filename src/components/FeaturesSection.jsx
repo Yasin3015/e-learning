@@ -60,7 +60,7 @@ const FeaturesSection = () => {
             data-aos-duration="1000"
             className="p-6 rounded-2xl border border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900 
             hover:from-gray-700 hover:to-gray-800 transition-all shadow-md hover:shadow-purple-500/20
-            transform hover:scale-105 hover:-translate-y-2 duration-300 ease-in-out"
+            transform hover:scale-105 hover:-translate-y-2 duration-500 ease-in-out"
           >
             <div className="flex justify-center mb-4">{feature.icon}</div>
             <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>

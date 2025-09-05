@@ -73,7 +73,7 @@ export default function ContactForm() {
             icon="User"
           />
           <InputField
-            type="email"
+            type="text"
             placeholder="Email"
             value={formData.email}
             onChange={(e) => handleChange("email", e.target.value)}

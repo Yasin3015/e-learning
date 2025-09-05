@@ -13,7 +13,6 @@ const Popup = ({ isOpen, onClose }) => {
         className="relative bg-gray-900 text-white p-8 rounded-2xl shadow-lg max-w-md w-full
                    animate-[fadeIn_0.4s_ease]"
       >
-        {/* زرار الإغلاق */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-white transition"

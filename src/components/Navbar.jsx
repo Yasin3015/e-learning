@@ -1,47 +1,14 @@
-import { useLayoutEffect, useMemo, useRef, useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import NavbarMobileMenu from "./NavbarMobileMenu";
+import { useState } from "react";
+import { useNavbar } from "../hooks/useNavbar";
 
 export default function Navbar({ sections, activeId, onLinkClick }) {
-  const listRef = useRef(null);
-  const itemRefs = useRef({});
-  const [indicatorStyle, setIndicatorStyle] = useState({
-    transform: "translateX(0px)",
-    width: 0,
-  });
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const idSet = useMemo(() => new Set(sections.map((s) => s.id)), [sections]);
-
-  const measure = () => {
-    if (!activeId || !idSet.has(activeId)) return;
-    const el = itemRefs.current[activeId];
-    const list = listRef.current;
-    if (!el || !list) return;
-    const listRect = list.getBoundingClientRect();
-    const elRect = el.getBoundingClientRect();
-    const left = elRect.left - listRect.left;
-    const width = elRect.width;
-    setIndicatorStyle({
-      transform: `translateX(${left}px)`,
-      width,
-    });
-  };
-
-  useLayoutEffect(() => {
-    measure();
-    const onResize = () => measure();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [activeId, sections]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { listRef, itemRefs, indicatorStyle, scrolled } = useNavbar(
+    sections,
+    activeId
+  );
 
   return (
     <header
@@ -53,9 +20,12 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="h-16 flex items-center justify-between">
+          {/* Logo */}
           <div className="text-2xl font-extrabold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
             <a href="#home">EduPro</a>
           </div>
+
+          {/* Links */}
           <nav className="relative hidden md:block">
             <ul
               ref={listRef}
@@ -69,10 +39,10 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
                       ref={(el) => (itemRefs.current[id] = el)}
                       onClick={() => onLinkClick(id)}
                       className={[
-                        "relative px-2 py-1 transition-colors duration-300",
+                        "relative px-3 py-1.5 transition-colors duration-300 rounded-lg font-medium",
                         isActive
-                          ? "text-purple-400 drop-shadow-[0_0_6px_rgba(168,85,247,0.8)]"
-                          : "text-gray-300 hover:text-purple-300",
+                          ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md"
+                          : "text-gray-300 hover:text-purple-300 hover:bg-white/10",
                       ].join(" ")}
                       aria-current={isActive ? "page" : undefined}
                     >
@@ -81,6 +51,7 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
                   </li>
                 );
               })}
+
               <span
                 aria-hidden
                 className="absolute bottom-0 h-[3px] rounded-full bg-gradient-to-r from-purple-400 to-blue-400 shadow-[0_0_10px_rgba(168,85,247,0.7)] transition-transform duration-300 ease-out"
@@ -91,6 +62,8 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
               />
             </ul>
           </nav>
+
+          {/* Mobile toggle */}
           <button
             className="md:hidden text-gray-300 hover:text-purple-400 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -99,36 +72,17 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
           </button>
         </div>
       </div>
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ${
-          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <ul className="flex flex-col items-center gap-4 py-4 bg-black/90 backdrop-blur-lg text-lg font-medium">
-          {sections.map(({ id, label }) => {
-            const isActive = activeId === id;
-            return (
-              <li key={id}>
-                <button
-                  onClick={() => {
-                    onLinkClick(id);
-                    setMenuOpen(false);
-                  }}
-                  className={[
-                    "relative px-2 py-1 transition-colors duration-300",
-                    isActive
-                      ? "text-purple-400 drop-shadow-[0_0_6px_rgba(168,85,247,0.8)]"
-                      : "text-gray-300 hover:text-purple-300",
-                  ].join(" ")}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {label}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+
+      {/* Mobile menu */}
+      <NavbarMobileMenu
+        menuOpen={menuOpen}
+        sections={sections}
+        activeId={activeId}
+        onLinkClick={(id) => {
+          onLinkClick(id);
+          setMenuOpen(false);
+        }}
+      />
     </header>
   );
 }

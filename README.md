@@ -1,12 +1,47 @@
-# React + Vite
+# 🎓 EduPro - Modern E-Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EduPro is a modern **React + Vite** based e-learning platform built to deliver a smooth, interactive, and responsive user experience.  
+It combines **performance, clean UI, and animations** using libraries like TailwindCSS, Lottie, and AOS.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⚡️ **Fast & Optimized** thanks to React 18 + Vite.
+- 🎨 **Modern UI** with TailwindCSS and custom animations.
+- 📱 **Responsive Design** for mobile, tablet, and desktop.
+- 🎬 **Interactive Animations** powered by Lottie and Animate.css.
+- 🌙 **Dark Theme Inspired** layout.
+- 🧩 **Reusable Components** (Navbar, Hero, Cards, Popups, Footer, etc.).
+- 📑 **Clean Code Architecture** with modular components.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌐 Live Demo
+
+👉 [EduPro on Netlify](https://e-learning-test.netlify.app/)
+
+---
+
+## 🛠 Tech Stack
+
+- [React 18](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Lucide Icons](https://lucide.dev/)
+- [Lottie React](https://lottiefiles.com/)
+- [AOS](https://michalsnik.github.io/aos/) (Scroll Animations)
+- [Animate.css](https://animate.style/)
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+ ├── assets/          # Images and Lottie animation files
+ ├── components/      # Reusable UI components (Navbar, Footer, Cards, etc.)
+ ├── hooks/           # Custom React hooks
+ ├── utils/           # JS Helper Functions
+ ├── App.jsx          # Root app component
+ └── main.jsx         # Entry point

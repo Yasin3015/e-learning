@@ -12,7 +12,7 @@ export default function ContactSection() {
       className="bg-gradient-to-b from-gray-900 via-black to-gray-900 py-20 px-6 md:px-12 lg:px-24 relative"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div data-aos="fade-right">
+        <div>
           <span
             className="text-sm uppercase tracking-widest text-purple-400 font-semibold"
             data-aos="fade-down"
@@ -42,9 +42,8 @@ export default function ContactSection() {
             Fill in the form below and our support team will get back to you as
             soon as possible.
           </p>
-          <div data-aos="zoom-in" data-aos-delay="500">
             <ContactForm />
-          </div>
+          
         </div>
         <div className="w-full" data-aos="fade-left" data-aos-delay="600">
           <Lottie animationData={contactAnimation} loop />
