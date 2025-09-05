@@ -1,6 +1,5 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import Navbar from "./components/Navbar";
-import Section from "./components/Section";
 import useActiveSection from "./hooks/useActiveSection";
 import Hero from "./components/Hero";
 import FeaturesSection from "./components/FeaturesSection";
@@ -8,10 +7,16 @@ import BannerSection from "./components/BannerSection";
 import PricingSection from "./components/PricingSection";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
-// import './app.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function App() {
-  // Define your sections (ids must match the Section id props)
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      once: true,     
+    });
+  }, []);
   const sections = useMemo(
     () => [
       { id: "home", label: "Home", title: "Learn Future Skills Anytime, Anywhere" },
@@ -23,8 +28,6 @@ export default function App() {
   );
 
   const activeId = useActiveSection(sections.map((s) => s.id));
-
-  // Smooth scroll to section (with slight offset handled by scroll-mt in Section)
   const handleLinkClick = useCallback((id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -34,10 +37,6 @@ export default function App() {
   return (
     <main className="relative">
       <Navbar sections={sections} activeId={activeId} onLinkClick={handleLinkClick} />
-
-      {/* spacer to account for fixed navbar height */}
-      <div className="h-16" />
-
       <Hero />
       <FeaturesSection />
       <BannerSection />

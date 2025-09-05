@@ -32,11 +32,9 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-black text-gray-300 py-16">
       <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12">
-        
-        {/* Logo + About */}
         <div>
           <h2 className="text-4xl font-extrabold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            EduPro
+            <a href="#home">EduPro</a>
           </h2>
           <p className="mt-4 text-gray-400 max-w-xs">
             Empowering learners worldwide with top-quality courses, expert instructors,

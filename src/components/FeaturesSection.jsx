@@ -30,9 +30,16 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-20 bg-gray-900 text-white text-center px-8">
+    <section
+      id="features"
+      className="py-20 bg-gray-900 text-white text-center px-8"
+    >
       {/* Title + Description */}
-      <div className="max-w-2xl mx-auto mb-16">
+      <div
+        className="max-w-2xl mx-auto mb-16"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
           Why Choose EduPro
         </h2>
@@ -48,7 +55,12 @@ const FeaturesSection = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="p-6 rounded-2xl border border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 transition-all shadow-md hover:shadow-purple-500/20"
+            data-aos="fade-up"
+            data-aos-delay={index * 200} // يخلي الكروت تظهر ورا بعض
+            data-aos-duration="1000"
+            className="p-6 rounded-2xl border border-gray-700 bg-gradient-to-b from-gray-800 to-gray-900 
+            hover:from-gray-700 hover:to-gray-800 transition-all shadow-md hover:shadow-purple-500/20
+            transform hover:scale-105 hover:-translate-y-2 duration-300 ease-in-out"
           >
             <div className="flex justify-center mb-4">{feature.icon}</div>
             <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>

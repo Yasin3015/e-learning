@@ -26,7 +26,7 @@ html{
 
 /* current price */
 .current-price {
-  font-size: 1.8rem;
+  font-size: 10rem !important;
   font-weight: 800;
   color: white;
 }

@@ -1,5 +1,5 @@
 import { useLayoutEffect, useMemo, useRef, useState, useEffect } from "react";
-import { Menu, X } from "lucide-react"; // أيقونات للهامبورجر و X
+import { Menu, X } from "lucide-react";
 
 export default function Navbar({ sections, activeId, onLinkClick }) {
   const listRef = useRef(null);
@@ -33,7 +33,6 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
     const onResize = () => measure();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeId, sections]);
 
   useEffect(() => {
@@ -46,20 +45,17 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 transition-all pt-3 pb-3 duration-500 ${
         scrolled
           ? "bg-black/30 backdrop-blur-lg shadow-lg shadow-purple-500/30"
-          : "bg-black shadow-none"
+          : "bg-black/30 shadow-none"
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="h-16 flex items-center justify-between">
-          {/* Logo */}
           <div className="text-2xl font-extrabold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            EduPro
+            <a href="#home">EduPro</a>
           </div>
-
-          {/* Desktop Navigation */}
           <nav className="relative hidden md:block">
             <ul
               ref={listRef}
@@ -85,8 +81,6 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
                   </li>
                 );
               })}
-
-              {/* Animated underline */}
               <span
                 aria-hidden
                 className="absolute bottom-0 h-[3px] rounded-full bg-gradient-to-r from-purple-400 to-blue-400 shadow-[0_0_10px_rgba(168,85,247,0.7)] transition-transform duration-300 ease-out"
@@ -97,8 +91,6 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
               />
             </ul>
           </nav>
-
-          {/* Mobile menu button */}
           <button
             className="md:hidden text-gray-300 hover:text-purple-400 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -107,8 +99,6 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
           </button>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-500 ${
           menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
@@ -122,7 +112,7 @@ export default function Navbar({ sections, activeId, onLinkClick }) {
                 <button
                   onClick={() => {
                     onLinkClick(id);
-                    setMenuOpen(false); // يقفل المينيو بعد الكليك
+                    setMenuOpen(false);
                   }}
                   className={[
                     "relative px-2 py-1 transition-colors duration-300",

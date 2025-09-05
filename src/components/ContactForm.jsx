@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Facebook, Twitter, Linkedin, MessageCircle } from "lucide-react";
 import InputField from "./ui components/InputField";
 import TextAreaField from "./ui components/TextAreaField";
@@ -35,8 +35,35 @@ export default function ContactForm() {
 
   return (
     <>
-      <form className="space-y-6" onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row gap-4">
+      {/* Social Icons */}
+      <div
+        className="mb-8 flex gap-4"
+        data-aos="fade-up"
+        data-aos-delay="800"
+      >
+        {socialLinks.map(({ icon: Icon, href, label }, index) => (
+          <a
+            key={label}
+            href={href}
+            className="p-3 rounded-full bg-gray-800 hover:bg-purple-500/80 transition-colors"
+            title={label}
+            data-aos="zoom-in"
+            data-aos-delay={1000 + index * 200} // كل أيقونة تظهر متأخرة عن اللي قبلها
+          >
+            <Icon className="text-white" size={20} />
+          </a>
+        ))}
+      </div>
+      <form
+        className="space-y-6"
+        onSubmit={handleSubmit}
+        data-aos="fade-up"
+      >
+        <div
+          className="flex flex-col md:flex-row gap-4"
+          data-aos="fade-right"
+          data-aos-delay="200"
+        >
           <InputField
             type="text"
             placeholder="Name"
@@ -55,34 +82,24 @@ export default function ContactForm() {
           />
         </div>
 
-        <TextAreaField
-          placeholder="Message"
-          value={formData.message}
-          onChange={(e) => handleChange("message", e.target.value)}
-          error={errors.message}
-        />
+        <div data-aos="fade-left" data-aos-delay="400">
+          <TextAreaField
+            placeholder="Message"
+            value={formData.message}
+            onChange={(e) => handleChange("message", e.target.value)}
+            error={errors.message}
+          />
+        </div>
 
-        <button
-          type="submit"
-          className="w-full md:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold shadow-lg shadow-purple-500/30 hover:scale-105 transition-transform duration-300"
-        >
-          Send Message
-        </button>
-      </form>
-
-      {/* Social Icons */}
-      <div className="mt-8 flex gap-4">
-        {socialLinks.map(({ icon: Icon, href, label }) => (
-          <a
-            key={label}
-            href={href}
-            className="p-3 rounded-full bg-gray-800 hover:bg-purple-500/80 transition-colors"
-            title={label}
+        <div data-aos="zoom-in" data-aos-delay="600">
+          <button
+            type="submit"
+            className="w-full md:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold shadow-lg shadow-purple-500/30 hover:scale-105 transition-transform duration-300"
           >
-            <Icon className="text-white" size={20} />
-          </a>
-        ))}
-      </div>
+            Send Message
+          </button>
+        </div>
+      </form>
 
       {success && <SuccessPopup onClose={() => setSuccess(false)} />}
     </>
